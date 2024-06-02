@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-namespace SlotMachineUltra
+﻿namespace SlotMachineUltra
 {
     public class SlotMachineGame
     {
         public int PlayerMoney { get; private set; }
         private string[,] grid;
+        private Random random; // Move Random to class level
 
         public SlotMachineGame()
         {
             PlayerMoney = Constants.STARTING_PLAYER_MONEY;
             grid = new string[Constants.GRID_SIZE, Constants.GRID_SIZE];
+            random = new Random(); // Initialize Random in the constructor
         }
 
         public void GenerateGrid()
         {
-            Random random = new Random();
             for (int i = 0; i < Constants.GRID_SIZE; i++)
             {
                 for (int j = 0; j < Constants.GRID_SIZE; j++)
@@ -30,7 +29,7 @@ namespace SlotMachineUltra
             return Constants.GRID_SIZE;
         }
 
-        public int CalculateWinnings(BetChoice betChoice, int wagerPerLine)
+        public int CalculateWinnings(int wagerPerLine)
         {
             int matches = CheckMatches();
             return matches * wagerPerLine * Constants.WIN_MULTIPLIER;

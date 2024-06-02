@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace SlotMachineUltra
 {
     class Program
@@ -32,7 +33,7 @@ namespace SlotMachineUltra
 
                 BetChoice betChoice = SlotMachineUI.GetPlayerChoice();
 
-                int winnings = game.CalculateWinnings(betChoice, wagerPerLine);
+                int winnings = game.CalculateWinnings(wagerPerLine); // Removed betChoice parameter
                 game.AddWinnings(winnings);
 
                 SlotMachineUI.DisplayResult(grid, winnings, totalWager, betChoice);
